@@ -1,0 +1,210 @@
+#!/bin/bash
+echo "####################################################################"
+echo "#                           ______                                 #"
+echo "#                        .-.      .-.                              #"
+echo "#                       /            \                             #"
+echo "#                      |      UXA     |                            #"
+echo "#                      |,  .-.  .-.  ,|                            #"
+echo "#                      | )(X_/  \X_)( |                            #"
+echo "#                      |/     /\     \|                            #"
+echo "#              _       (_     ^^     _)                            #"
+echo "#      _\ ____) \_______\__|IIIIII|__/_________________________    #"
+echo "#     (_)[___]{}<________|-\IIIIII/-|__UXA__UXA__UXA___________\   #"
+echo "#       /     )_/        \          /                              #"
+echo "#                         \ ______ /                               #"
+echo "#                                                                  #"
+echo "#                                                                  #"
+echo "#                                                                  #"
+echo "####################################################################"
+for x in `cat ip_list` ; do
+echo ""
+echo $x >last_ip
+echo //// $x ////
+
+timeout 0.5 bash -c "echo >/dev/tcp/$x/21" 2>/dev/null
+if [ $? -eq 0 ]
+then
+echo $x":21:FTP"
+echo $x >> FTP.txt
+fi
+
+timeout 0.5 bash -c "echo >/dev/tcp/$x/22" 2>/dev/null
+if [ $? -eq 0 ]
+then
+echo $x":22:SSH"
+echo $x >>  SSH.txt
+fi
+
+timeout 0.5 bash -c "echo >/dev/tcp/$x/25" 2>/dev/null
+if [ $? -eq 0 ]
+then
+echo $x":25:SMTP"
+echo $x >>  SMTP.txt
+fi
+
+timeout 0.5 bash -c "echo >/dev/tcp/$x/53" 2>/dev/null
+if [ $? -eq 0 ]
+then
+echo $x":53:DNS"
+echo $x >>  DNS.txt
+fi
+
+timeout 0.5 bash -c "echo >/dev/tcp/$x/80" 2>/dev/null
+if [ $? -eq 0 ]
+then
+echo $x":80:Web"
+echo $x >>  WEB.txt
+fi
+
+timeout 0.5 bash -c "echo >/dev/tcp/$x/110" 2>/dev/null
+if [ $? -eq 0 ]
+then
+echo $x":110:POP3"
+fi
+
+timeout 0.5 bash -c "echo >/dev/tcp/$x/135" 2>/dev/null
+if [ $? -eq 0 ]
+then
+echo $x":135:RPC"
+fi
+
+timeout 0.5 bash -c "echo >/dev/tcp/$x/143" 2>/dev/null
+if [ $? -eq 0 ]
+then
+echo $x":143:IMAP"
+echo $x >>  IMAP.txt
+fi
+
+timeout 0.5 bash -c "echo >/dev/tcp/$x/161" 2>/dev/null
+if [ $? -eq 0 ]
+then
+echo $x":161:SNMP"
+echo $x >>  SNMP.txt
+fi
+
+timeout 0.5 bash -c "echo >/dev/tcp/$x/443" 2>/dev/null
+if [ $? -eq 0 ]
+then
+echo $x":443:HTTPS"
+echo $x >>  HTTPS.txt
+fi
+
+timeout 0.5 bash -c "echo >/dev/tcp/$x/465" 2>/dev/null
+if [ $? -eq 0 ]
+then
+echo $x":465:SMTPS"
+echo $x >>  SMTPS.txt
+fi
+
+#timeout 0.5 bash -c "echo >/dev/tcp/$x/513" 2>/dev/null
+if [ $? -eq 0 ]
+then
+echo $x":513:Rlogin"
+echo $x >>  RLOGİN.txt
+fi
+
+timeout 0.5 bash -c "echo >/dev/tcp/$x/587" 2>/dev/null
+if [ $? -eq 0 ]
+then
+echo $x":587:Submission"
+echo $x >>  SUBMISSION.txt
+fi
+
+timeout 0.5 bash -c "echo >/dev/tcp/$x/993" 2>/dev/null
+if [ $? -eq 0 ]
+then
+echo $x":993:IMAPS"
+echo $x >>  IMAPS.txt
+fi
+
+timeout 0.5 bash -c "echo >/dev/tcp/$x/1194" 2>/dev/null
+if [ $? -eq 0 ]
+then
+echo $x":1194:OpenVPN"
+echo $x >>  OPENVPN.txt
+fi
+
+timeout 0.5 bash -c "echo >/dev/tcp/$x/1311" 2>/dev/null
+if [ $? -eq 0 ]
+then
+echo $x":1311:Dell Open Manage"
+echo $x >>  DELL.txt
+fi
+
+timeout 0.5 bash -c "echo >/dev/tcp/$x/1433" 2>/dev/null
+if [ $? -eq 0 ]
+then
+echo $x":1433:MsSQL"
+echo $x >>  MsSQL.txt
+fi
+
+timeout 0.5 bash -c "echo >/dev/tcp/$x/1723" 2>/dev/null
+if [ $? -eq 0 ]
+then
+echo $x":1723:PPTP(MCS VPN)"
+echo $x >>  MCSVPN.txt
+fi
+
+timeout 0.5 bash -c "echo >/dev/tcp/$x/2083" 2>/dev/null
+if [ $? -eq 0 ]
+then
+echo $x":2083:Cpanel"
+echo $x >>  CPANEL.txt
+fi
+
+timeout 0.5 bash -c "echo >/dev/tcp/$x/2086" 2>/dev/null
+if [ $? -eq 0 ]
+then
+echo $x":2086:Cpanel"
+echo $x >>  CPANEL.txt
+fi
+
+timeout 0.5 bash -c "echo >/dev/tcp/$x/2222" 2>/dev/null
+if [ $? -eq 0 ]
+then
+echo $x":2222:Direct Admin"
+echo $x >>  DADMİN.txt
+fi
+
+timeout 0.5 bash -c "echo >/dev/tcp/$x/3306" 2>/dev/null
+if [ $? -eq 0 ]
+then
+echo $x":3306:MySQL"
+echo $x >>  MySQL.txt
+fi
+
+timeout 0.5 bash -c "echo >/dev/tcp/$x/3389" 2>/dev/null
+if [ $? -eq 0 ]
+then
+echo $x":3389:RDP"
+echo $x >>  RDP.txt
+fi
+
+timeout 0.5 bash -c "echo >/dev/tcp/$x/4899" 2>/dev/null
+if [ $? -eq 0 ]
+then
+echo $x":4899:Radmin"
+echo $x >>  RADMIN.txt
+fi
+
+timeout 0.5 bash -c "echo >/dev/tcp/$x/5060" 2>/dev/null
+if [ $? -eq 0 ]
+then
+echo $x":5060:SIP"
+echo $x >>  SIP.txt
+fi
+
+timeout 0.5 bash -c "echo >/dev/tcp/$x/8443" 2>/dev/null
+if [ $? -eq 0 ]
+then
+echo $x":8443:Plesk"
+echo $x >>  PLESK.txt
+fi
+
+timeout 0.5 bash -c "echo >/dev/tcp/$x/10000" 2>/dev/null
+if [ $? -eq 0 ]
+then
+echo $x":10000:webmin"
+echo $x >>  WEBMIN.txt
+fi
+done
